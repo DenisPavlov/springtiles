@@ -49,26 +49,21 @@ public class SpitterController {
     }
 
     @RequestMapping(method=RequestMethod.GET)
-    public String listSpitters(
-            @RequestParam(value="page", defaultValue="1") int page,
-            @RequestParam(value="perPage", defaultValue="10") int perPage,
-            Map<String, Object> model) {
+    public String listSpitters(@RequestParam(value="page", defaultValue="1") int page,
+                               @RequestParam(value="perPage", defaultValue="10") int perPage,
+                               Map<String, Object> model) {
         model.put("spitters", spitterService.getAllSpitters());
         return "spitters/list";
     }
 
-    //<start id="method_new_spitter"/>
     @RequestMapping(method=RequestMethod.GET, params="new")
     public String createSpitterProfile(Model model) {
         model.addAttribute(new Spitter());
         return "spitters/edit";
     }
-    //<end id="method_new_spitter"/>
 
-    //<start id="method_addSpitterFromForm"/>
     @RequestMapping(method=RequestMethod.POST)
-    public String addSpitterFromForm(@Valid Spitter spitter,
-                                     BindingResult bindingResult,
+    public String addSpitterFromForm(@Valid Spitter spitter, BindingResult bindingResult,
                                      @RequestParam(value="image", required=false) MultipartFile image) {
 
         if(bindingResult.hasErrors()) {
@@ -89,7 +84,6 @@ public class SpitterController {
 
         return "redirect:/spitters/" + spitter.getUsername();
     }
-    //<end id="method_addSpitterFromForm"/>
 
     private void saveImage(String filename, MultipartFile image)
             throws ImageUploadException {
@@ -155,10 +149,8 @@ public class SpitterController {
         return "redirect:/home";
     }
 
-    @RequestMapping(value="/{username}/spittles",
-            method=RequestMethod.GET)
-    public String listSpittlesForSpitter(
-            @PathVariable String username, Model model) {
+    @RequestMapping(value="/{username}/spittles", method=RequestMethod.GET)
+    public String listSpittlesForSpitter(@PathVariable String username, Model model) {
         model.addAttribute(spitterService.getSpitter(username));
         List<Spittle> spittlesForSpitter = spitterService.getSpittlesForSpitter(username);
         model.addAttribute(spittlesForSpitter);
