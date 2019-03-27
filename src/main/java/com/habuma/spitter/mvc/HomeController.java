@@ -10,9 +10,4 @@ public class HomeController {
     public String home() {
         return "home";
     }
-
-    @RequestMapping(value = "/home_home", method = RequestMethod.GET)
-    public String home_home() {
-        return "home_home";
-    }
 }

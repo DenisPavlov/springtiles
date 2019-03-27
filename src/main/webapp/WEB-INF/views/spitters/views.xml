@@ -1,8 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
 <tiles-definitions>
-    <definition name="home_home" extends="baseLayout">
-        <put-attribute name="title" value="Home_Home" />
-        <put-attribute name="body" value="/WEB-INF/jsp/home.jsp" />
+    <definition name="spitters/list" extends="template">
+        <put-attribute name="content"
+                       value="/WEB-INF/views/spitters/list.jsp" />
     </definition>
+
+    <definition name="spitters/view" extends="template">
+        <put-attribute name="content"
+                       value="/WEB-INF/views/spitters/view.jsp" />
+    </definition>
+
+    <!--<start id="tile_spitter_edit"/>-->
+    <definition name="spitters/edit" extends="template">
+        <put-attribute name="content"
+                       value="/WEB-INF/views/spitters/edit.jsp" />
+    </definition>
+    <!--<end id="tile_spitter_edit"/>-->
 </tiles-definitions>
