@@ -3,18 +3,17 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
 <div>
-	<p>Spittle Form</p>
-     
 	<%--<sec:authorize access="hasRole('ROLE_SPITTER')">--%>
-    <%--<s:url value="/spittles" var="spittle_url" />--%>
-	  <%--<sf:form modelAttribute="spittle" method="POST" action="${spittle_url}">--%>
-	    <%--<sf:label path="text"><s:message code="label.spittle" text="Enter spittle:"/></sf:label>--%>
-	    <%--<sf:textarea path="text" rows="2" cols="40" />--%>
-		<%--<sf:errors path="text" /><br/>--%>
+    <s:url value="/spittles" var="spittle_url" />
+	  <%--@elvariable id="spittle" type="com.habuma.spitter.domain.Spittle"--%>
+	  <sf:form modelAttribute="spittle" method="POST" action="${spittle_url}">
+	    <sf:label path="text"><s:message code="label.spittle" text="Enter spittle:"/></sf:label>
+	    <sf:textarea path="text" rows="2" cols="40" />
+		<sf:errors path="text" /><br/>
 
-	    <%--<div class="spitItSubmitIt">--%>
-	      <%--<input type="submit" value="Spit it!" class="status-btn round-btn disabled" />--%>
-	    <%--</div>--%>
-	  <%--</sf:form>--%>
+	    <div class="spitItSubmitIt">
+	      <input type="submit" value="Spit it!" class="status-btn round-btn disabled" />
+	    </div>
+	  </sf:form>
 	<%--</sec:authorize>--%>
 </div>
