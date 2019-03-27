@@ -15,10 +15,8 @@ import com.sun.syndication.feed.rss.Item;
 public class SpittlesRssView extends AbstractRssFeedView {
 
     @Override
-    protected List<Item> buildFeedItems(
-            Map<String, Object> model,
-            HttpServletRequest request,
-            HttpServletResponse response) throws Exception {
+    protected List<Item> buildFeedItems(Map<String, Object> model, HttpServletRequest request,
+                                        HttpServletResponse response) throws Exception {
 
         @SuppressWarnings("unchecked")
         List<Spittle> spittles = (List<Spittle>) model.get("spittles");

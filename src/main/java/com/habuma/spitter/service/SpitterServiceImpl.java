@@ -26,13 +26,11 @@ public class SpitterServiceImpl implements SpitterService {
 
     @Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
     public List<Spittle> getRecentSpittles(int count) {
-        List<Spittle> recentSpittles =
-                spitterDao.getRecentSpittle();
+        List<Spittle> recentSpittles = spitterDao.getRecentSpittle();
 
         reverse(recentSpittles);
 
-        return recentSpittles.subList(0,
-                min(49, recentSpittles.size()));
+        return recentSpittles.subList(0, min(49, recentSpittles.size()));
     }
 
     public void saveSpitter(Spitter spitter) {
