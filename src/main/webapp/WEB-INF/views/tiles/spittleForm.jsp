@@ -3,7 +3,7 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
 <div>
-	<%--<sec:authorize access="hasRole('ROLE_SPITTER')">--%>
+	<sec:authorize access="hasRole('ROLE_SPITTER')">
     <s:url value="/spittles" var="spittle_url" />
 	  <%--@elvariable id="spittle" type="com.habuma.spitter.domain.Spittle"--%>
 	  <sf:form modelAttribute="spittle" method="POST" action="${spittle_url}">
@@ -15,5 +15,5 @@
 	      <input type="submit" value="Spit it!" class="status-btn round-btn disabled" />
 	    </div>
 	  </sf:form>
-	<%--</sec:authorize>--%>
+	</sec:authorize>
 </div>
