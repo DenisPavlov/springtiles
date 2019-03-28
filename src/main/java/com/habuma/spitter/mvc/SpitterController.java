@@ -85,26 +85,22 @@ public class SpitterController {
         return "redirect:/spitters/" + spitter.getUsername();
     }
 
-    private void saveImage(String filename, MultipartFile image)
-            throws ImageUploadException {
+    private void saveImage(String filename, MultipartFile image) throws ImageUploadException {
 
         try {
-            AWSCredentials awsCredentials =
-                    new AWSCredentials(s3AccessKey, s3SecretKey);
+            AWSCredentials awsCredentials = new AWSCredentials(s3AccessKey, s3SecretKey);
             S3Service s3 = new RestS3Service(awsCredentials);
 
             S3Bucket imageBucket = s3.getBucket("spitterImages");
             S3Object imageObject = new S3Object(filename);
 
-            imageObject.setDataInputStream(
-                    new ByteArrayInputStream(image.getBytes()));
+            imageObject.setDataInputStream(new ByteArrayInputStream(image.getBytes()));
             imageObject.setContentLength(image.getBytes().length);
             imageObject.setContentType("image/jpeg");
 
             AccessControlList acl = new AccessControlList();
             acl.setOwner(imageBucket.getOwner());
-            acl.grantPermission(GroupGrantee.ALL_USERS,
-                    Permission.PERMISSION_READ);
+            acl.grantPermission(GroupGrantee.ALL_USERS, Permission.PERMISSION_READ);
             imageObject.setAcl(acl);
             s3.putObject(imageBucket, imageObject);
         } catch (Exception e) {
@@ -118,14 +114,11 @@ public class SpitterController {
         }
     }
 
-    //<start id="method_showSpitterProfile"/>
     @RequestMapping(value="/{username}", method=RequestMethod.GET)
-    public String showSpitterProfile(@PathVariable String username,
-                                     Model model) {
+    public String showSpitterProfile(@PathVariable String username, Model model) {
         model.addAttribute(spitterService.getSpitter(username));
         return "spitters/view";
     }
-    //<end id="method_showSpitterProfile"/>
 
     @RequestMapping(value="/{username}", method=RequestMethod.GET,
             params="edit")
@@ -158,8 +151,7 @@ public class SpitterController {
     }
 
     // Machine-friendly RESTful handler methods follow
-    @RequestMapping(method = RequestMethod.GET,
-            headers = "Accept=application/json")
+    @RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
     public @ResponseBody List<Spitter> allSpitters() {
         return spitterService.getAllSpitters();
     }

@@ -3,8 +3,7 @@
 <div>
 <h2>Create a free Spitter account</h2>
 
-<sf:form method="POST" modelAttribute="spitter" 
-         enctype="multipart/form-data">         
+<sf:form method="POST" modelAttribute="spitter" enctype="multipart/form-data">
    <fieldset> 
    <table cellspacing="0">
       <tr>
@@ -15,16 +14,15 @@
       </tr>
       <tr>
          <th><sf:label path="username">Username:</sf:label></th>
-         <td><sf:input path="username" size="15" maxlength="15" />
-              <small id="username_msg">No spaces, please.</small><br/>
-             <sf:errors path="username" cssClass="error" />
-
-            </td>
+         <td>
+            <sf:input path="username" size="15" maxlength="15" />
+            <small id="username_msg">No spaces, please.</small><br/>
+            <sf:errors path="username" cssClass="error" />
+         </td>
       </tr>
       <tr>
          <th><sf:label path="password">Password:</sf:label></th>
-         <td><sf:password path="password" size="30" 
-                            showPassword="true"/> 
+         <td><sf:password path="password" size="30" showPassword="true"/>
              <small>6 characters or more (be tricky!)</small><br/>
              <sf:errors path="password" cssClass="error" />
             </td>

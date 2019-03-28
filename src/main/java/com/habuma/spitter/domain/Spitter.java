@@ -30,25 +30,18 @@ public class Spitter implements Serializable {
 
     private Long id;
 
-    //<start id="java_SpitterValidated" />
-    @Size(min=3, max=20, message=
-            "Username must be between 3 and 20 characters long.") //<co id="co_enforceSize"/>
-    @Pattern(regexp="^[a-zA-Z0-9]+$",
-            message="Username must be alphanumeric with no spaces")  //<co id="co_noSpaces"/>
+    @Size(min=3, max=20, message="Username must be between 3 and 20 characters long.")
+    @Pattern(regexp="^[a-zA-Z0-9]+$", message="Username must be alphanumeric with no spaces")
     private String username;
 
-    @Size(min=6, max=20,
-            message="The password must be at least 6 characters long.") //<co id="co_enforceSize"/>
+    @Size(min=6, max=20, message="The password must be at least 6 characters long.")
     private String password;
 
-    @Size(min=3, max=50, message=
-            "Your full name must be between 3 and 50 characters long.")    //<co id="co_enforceSize"/>
+    @Size(min=3, max=50, message="Your full name must be between 3 and 50 characters long.")
     private String fullName;
 
-    @Pattern(regexp="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}",
-            message="Invalid email address.") //<co id="co_emailPattern"/>
+    @Pattern(regexp="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", message="Invalid email address.")
     private String email;
-    //<end id="java_SpitterValidated" />
 
     private boolean updateByEmail;
 
