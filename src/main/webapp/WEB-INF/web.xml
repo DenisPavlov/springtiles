@@ -14,37 +14,28 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!--<start id="filter_security" />-->
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
-		<filter-class>
-			org.springframework.web.filter.DelegatingFilterProxy
-		</filter-class>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
-	<!--<end id="filter_security" />-->
 
-	<!--<start id="filter_hiddenHttpMethod" />-->
-	<filter>
-		<filter-name>httpMethodFilter</filter-name>
-		<filter-class>
-			org.springframework.web.filter.HiddenHttpMethodFilter
-		</filter-class>
-	</filter>
-	<!--<end id="filter_hiddenHttpMethod" />-->
+	<!--<filter>-->
+		<!--<filter-name>httpMethodFilter</filter-name>-->
+		<!--<filter-class>-->
+			<!--org.springframework.web.filter.HiddenHttpMethodFilter-->
+		<!--</filter-class>-->
+	<!--</filter>-->
 
-	<!--<start id="filter_mapping_security" />-->
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	<!--<end id="filter_mapping_security" />-->
 
 
-	<!--<start id="filterMapping_hiddenHttpMethod" />-->
-	<filter-mapping>
-		<filter-name>httpMethodFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	<!--<filter-mapping>-->
+		<!--<filter-name>httpMethodFilter</filter-name>-->
+		<!--<url-pattern>/*</url-pattern>-->
+	<!--</filter-mapping>-->
 
 	<!-- Processes application requests -->
 	<servlet>
